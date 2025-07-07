@@ -1,0 +1,19 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '../components/ui/Headline.astro';
+import {Content as PrivacyNoticeContent } from '../content/privacy-notice-content.md';
+
+const metadata = {
+  title: 'Privacy Notice',
+};
+---
+
+<Layout metadata={metadata}>
+  <Headline title={metadata.title} />
+  <div class="markdown-content md:container md:mx-auto">
+    
+    <PrivacyNoticeContent/>
+  </div>
+
+  
+</Layout>
