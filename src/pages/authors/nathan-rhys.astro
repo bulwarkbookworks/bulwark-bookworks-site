@@ -1,0 +1,24 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import localAuthorImage from '~/../public/images/nathan-rhys-v0.webp';
+import Hero2 from '~/components/widgets/Hero2.astro';
+const metadata = {
+  title: 'Nathan Rhys',
+};
+const tagline = 'Author of the upcoming novel <em>The Forgotten Garden</em>';
+const subtitleValue = 'The world is broken. <strong>Good</strong> still matters.';
+const finalAuthorImage = {
+  src: localAuthorImage,
+  alt: metadata.title,
+};
+
+---
+
+<Layout metadata={metadata}>
+  <Hero2 tagline={tagline}
+         title={metadata.title}
+         subtitle={subtitleValue}
+         image={finalAuthorImage}
+  />
+</Layout>

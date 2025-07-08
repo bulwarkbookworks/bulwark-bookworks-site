@@ -91,6 +91,11 @@
   margin-top: 0;
 }
 
+html .dark main label {
+  color: var(--aw-color-text-default) !important;
+}
+
+
 
 /* Markdown Content */
 
