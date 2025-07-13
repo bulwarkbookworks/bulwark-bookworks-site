@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://www.bulwarkbookworks.com/sitemap-index.xml
