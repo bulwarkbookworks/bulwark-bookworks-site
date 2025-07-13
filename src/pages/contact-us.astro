@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Headline from '../components/ui/Headline.astro';
+import ContactUsMarkdown from '~/content/contact-us-content.md';
 
 const metadata = {
   title: 'Contact Us',
@@ -9,7 +10,10 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <Headline title={metadata.title} />
-  <div class="md:container md:mx-auto md:px-4">
-    <iframe class="basinIframe" src="https://usebasin.com/form/444f40af2731/view/d98df49f406b?iframe=true" frameborder="0" style="border: none; overflow: hidden;" onload="var self = this; self.contentWindow.postMessage('getHeight', '*'); setInterval(function() { self.contentWindow.postMessage('getHeight', '*'); }, 500); window.addEventListener('message', function(event) { if (event.data.action === 'setHeight') { self.style.height = event.data.height + 'px'; } });" width="100%"></iframe><script type="text/javascript"> window.addEventListener('message', function(event) { if (event.data.action === 'redirect') { window.location.href = event.data.url; } }); </script>
+  <div class="container md:mx-auto lg:mx-20 lg:px-10 sm:px-16 markdown-content">
+    <ContactUsMarkdown/>
+  </div>
+  <div class="">
+    <iframe title="Contact Us Form" class="basinIframe" src="https://usebasin.com/form/444f40af2731/view/d98df49f406b?iframe=true" frameborder="0" style="border: none; overflow: hidden;" onload="var self = this; self.contentWindow.postMessage('getHeight', '*'); setInterval(function() { self.contentWindow.postMessage('getHeight', '*'); }, 500); window.addEventListener('message', function(event) { if (event.data.action === 'setHeight') { self.style.height = event.data.height + 'px'; } });" width="100%"></iframe><script type="text/javascript"> window.addEventListener('message', function(event) { if (event.data.action === 'redirect') { window.location.href = event.data.url; } }); </script>
   </div>
 </Layout>

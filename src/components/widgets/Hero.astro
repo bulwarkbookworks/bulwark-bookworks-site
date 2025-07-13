@@ -15,6 +15,7 @@ const {
 
   id,
   bg = await Astro.slots.render('bg'),
+  imageFlavor = await Astro.slots.render('image-flavor'), //full (or nothing), wide, tall, square
 } = Astro.props;
 ---
 

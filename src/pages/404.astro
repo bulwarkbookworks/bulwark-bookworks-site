@@ -2,22 +2,30 @@
 import Layout from '~/layouts/Layout.astro';
 import { getHomePermalink } from '~/utils/permalinks';
 
-const title = `Error 404`;
+const title = `404`;
+
+import { Image } from 'astro:assets';
+import the404Image from "../assets/404.png";
+
+
 ---
 
 <Layout metadata={{ title }}>
-  <section class="flex items-center h-full p-16">
-    <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
+  <section class="flex items-center h-full sm:px-2.5 md:px-10 lg:px-12 xl:px-16 pt-2">
+    <div class="container flex flex-col items-center justify-center px-5 mx-auto">
       <div class="max-w-md text-center">
-        <h2 class="mb-8 font-bold text-9xl">
-          <span class="sr-only">Error</span>
-          <span class="text-primary">404</span>
+        <h2 class="mb-4 font-bold text-7xl">
+          <span class="sr-only">404 Error Except It's A Secret Room Instead</span>
+          <span class="">404</span>
         </h2>
-        <p class="text-3xl font-semibold md:text-3xl">Sorry, we couldn't find this page.</p>
-        <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">
-          But dont worry, you can find plenty of other things on our homepage.
-        </p>
-        <a rel="noopener noreferrer" href={getHomePermalink()} class="btn ml-4">Back to homepage</a>
+        <Image src={the404Image} alt="Secret Room Image" />
+        <p class="text-3xl font-semibold md:text-3xl">You’ve stumbled upon a secret room.</p>
+        <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">A dusty tome rests on a pedestal, bound in unfamiliar leather.</p>
+        <div>
+          <a class="ml-onclick-form btn ml-4" href="javascript:void(0)" onclick="ml('show', 'V7C5Fy', true)">Open The Mysterious Tome</a>
+          <a rel="noopener noreferrer" href={getHomePermalink()} class="btn ml-4">Back To Safety</a>
+        </div>
+        
       </div>
     </div>
   </section>
