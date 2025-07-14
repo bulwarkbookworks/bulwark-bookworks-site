@@ -3,6 +3,7 @@ import Layout from '~/layouts/LandingLayout.astro';
 
 import Hero2 from '~/components/widgets/Hero2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import { getPermalink } from '../utils/permalinks';
 
 const metadata = {
   title: 'Bulwark Bookworks',
@@ -16,29 +17,16 @@ const callToActionSubtitle = "<p>We publish tales forged in conflict and convict
 
   <Hero2
     tagline="Stories that hold the line."
-    title="Welcome to Bulwark Bookworks"
-    subtitle="Lorem ipsum dolar sit amet"
+    title="Bulwark Bookworks"
+    subtitle="We publish sci-fi and fantasy with conviction. No nihilism. No lectures. Just stories that mean something."
     actions={[
-      { variant: 'primary', text: 'Join the Vanguard', href: '#' },
-      { text: 'Learn more', href: '#' },
+      //{ variant: 'primary', text: 'Join the Vanguard', href: getPermalink('/join/vanguard') },
+      { text: 'Learn more', href: getPermalink('/about-us') },
     ]}
     image={{
       src: '/images/hero/pexels-mali-101708.jpg',
       alt: 'Typewriter. It starts with one WORD',
     }}
     imageFlavor='wide'
-  />
-
-  <CallToAction
-    title="Lorem Ipsum"
-    subtitle={callToActionSubtitle}
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Download Template',
-        href: 'https://github.com/onwidget/astrowind',
-        icon: 'tabler:download',
-      },
-    ]}
   />
 </Layout>
