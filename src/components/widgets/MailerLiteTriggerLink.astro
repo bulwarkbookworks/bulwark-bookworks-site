@@ -1,0 +1,34 @@
+---
+const { 
+  formId = '',
+  linkClasses = '' 
+} = Astro.props;
+const buttonId = `ml-trigger-${Math.random().toString(36).slice(2)}`; // unique id for multiple triggers
+const script = `
+  document.getElementById('${buttonId}').addEventListener('click', function(e) {
+    console.group('Triggering MailerLite');
+    const theFormId = '${formId}';
+    console.info('Form ID: ', theFormId);
+    if(theFormId.length == 0){
+      console.warn('Invalid form id');
+      console.groupEnd();
+      return;
+    }
+    e.preventDefault();
+    const theMl = window["ml"];
+    if (theMl != null && typeof theMl === "function") {
+      console.info("Triggering MailerLite function");
+      console.groupEnd();
+      theMl('show', theFormId, true);
+     
+    } else {
+      console.warn("Failed to trigger MailerLite function");
+      console.groupEnd();
+    }
+  });
+`;
+---
+<a id={buttonId} class={linkClasses} href="javascript:void(0)">
+  <slot />
+</a>
+<script type="module" set:html={script}></script>

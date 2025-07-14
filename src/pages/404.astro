@@ -1,13 +1,12 @@
 ---
 import Layout from '~/layouts/Layout.astro';
 import { getHomePermalink } from '~/utils/permalinks';
+import MailerLiteTriggerLink from '~/components/widgets/MailerLiteTriggerLink.astro';
 
 const title = `404`;
 
 import { Image } from 'astro:assets';
 import the404Image from "../assets/404.png";
-
-
 ---
 
 <Layout metadata={{ title }}>
@@ -22,10 +21,11 @@ import the404Image from "../assets/404.png";
         <p class="text-3xl font-semibold md:text-3xl">You’ve stumbled upon a secret room.</p>
         <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">A dusty tome rests on a pedestal, bound in unfamiliar leather.</p>
         <div>
-          <a class="ml-onclick-form btn ml-4" href="javascript:void(0)" onclick="ml('show', 'V7C5Fy', true)">Open The Mysterious Tome</a>
+          <MailerLiteTriggerLink formId="V7C5Fy" linkClasses="btn ml-4">
+            Open The Mysterious Tome
+          </MailerLiteTriggerLink>
           <a rel="noopener noreferrer" href={getHomePermalink()} class="btn ml-4">Back To Safety</a>
         </div>
-        
       </div>
     </div>
   </section>
