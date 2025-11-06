@@ -1,7 +1,8 @@
 import { getPermalink } from './utils/permalinks';
 
 export const headerData = {
-  links: [
+  links: [],
+  /*links: [
     {
       text: 'Home',
       href: getPermalink('/')
@@ -10,19 +11,21 @@ export const headerData = {
       text: 'About Us',
       href: getPermalink('/about-us')
     },
-  ],
-  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+  ],*/
+  actions: [],
+  //actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
 };
 
 export const footerData = {
   links: [
+    /*
     {
       title: 'Main',
       links: [
         { text: 'Home', href: '/' },
       ],
-    },
-    {
+    }
+    ,{
       title: 'Our Authors',
       links: [
         { text: 'Nathan Rhys', href: '/authors/nathan-rhys' },
@@ -34,7 +37,7 @@ export const footerData = {
         { text: 'About Us', href: '/about-us' },
         { text: 'Contact Us', href: '/contact-us' },
       ],
-    }
+    }*/
   ],
   secondaryLinks: [
     { text: 'Privacy Notice', href: getPermalink('/privacy-notice') },
@@ -49,7 +52,7 @@ export const footerData = {
   ],
   */
   footNote: `
-    <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="https://onwidget.com/favicon/favicon-32x32.png" alt="onWidget logo" loading="lazy"></img>
-    Made by <a class="text-blue-600 underline dark:text-muted" href="https://onwidget.com/"> onWidget</a> · All rights reserved.
+  <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="~/assets/favicons/logo-light.webp" alt="Bulwark Bookworks logo" loading="lazy"></img>
+    &copy; <span id='footer-year'></span> Bulwark Bookworks — All rights reserved.
   `,
 };

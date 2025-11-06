@@ -1,6 +1,8 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { SITE } from 'astrowind:config';
+import { Image } from 'astro:assets';
+import footerLogo from '../../assets/favicons/logo-light.webp';
 import { getHomePermalink } from '~/utils/permalinks';
 
 interface Link {
@@ -16,16 +18,18 @@ interface Links {
 }
 
 export interface Props {
-  links: Array<Links>;
-  secondaryLinks: Array<Link>;
-  socialLinks: Array<Link>;
+  links?: Array<Links>;
+  secondaryLinks?: Array<Link>;
+  socialLinks?: Array<Link>;
   theme?: string;
+  footNote?: string;
 }
 
-const year = new Date().getFullYear();
-const footNote = " &copy; <span id='footer-year'>{year}</span> Bulwark Bookworks,LLC. — All rights reserved";
+// Use footNote passed in from footerData (navigation.ts). Default to an empty string.
+const { socialLinks = [], secondaryLinks = [], links = [], theme = 'dark', footNote = '' } = Astro.props;
 
-const { socialLinks = [], secondaryLinks = [], links = [], theme = 'dark' } = Astro.props;
+// Remove any image tag from configured footNote HTML to avoid broken/aliased asset URLs
+const sanitizedFootNote = footNote ? footNote.replace(/<img[\s\S]*?>/gi, '').trim() : '';
 ---
 
 <footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-800 not-prose']}>
@@ -38,17 +42,17 @@ const { socialLinks = [], secondaryLinks = [], links = [], theme = 'dark' } = As
         <div class="mb-2">
           <a class="inline-block font-bold text-xl" href={getHomePermalink()}>{SITE?.name}</a>
         </div>
-        <div class="text-sm text-muted flex gap-1">
+        <div class="text-sm text-muted flex gap-1 items-center">
           {
             secondaryLinks.map(({ text, href }, index) => (
-              <>
-                {index !== 0 ? ' · ' : ''}
+              <Fragment>
+                {index !== 0 ? <span class="mx-1">·</span> : ''}
                 <a
                   class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
                   href={href}
                   set:html={text}
                 />
-              </>
+              </Fragment>
             ))
           }
         </div>
@@ -98,8 +102,9 @@ const { socialLinks = [], secondaryLinks = [], links = [], theme = 'dark' } = As
         )
       }
 
-      <div class="text-sm mr-4 dark:text-muted">
-        <Fragment set:html={footNote} />
+      <div class="text-sm mr-4 dark:text-muted flex items-center">
+        <Image src={footerLogo} alt="Bulwark Bookworks logo" width={20} height={20} class="mr-2 rounded-sm" loading="lazy" />
+        <Fragment set:html={sanitizedFootNote || footNote} />
       </div>
       <script is:inline>
         document.getElementById("footer-year").innerText = new Date().getFullYear();
